@@ -4,13 +4,11 @@ import com.unversityregister.demo.Student;
 import com.unversityregister.dto.StudentRequest;
 import com.unversityregister.dto.StudentResponse;
 import com.unversityregister.dto.StudentUpdateRequest;
-import com.unversityregister.mapper.StudentMapper;
 import com.unversityregister.repository.StudentRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;

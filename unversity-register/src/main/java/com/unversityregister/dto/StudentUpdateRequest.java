@@ -10,4 +10,6 @@ public class StudentUpdateRequest {
     private String profession;
     private String groupNo;
     private String studentCode;
+    private Integer professionId;
+    private Integer computerId;
 }

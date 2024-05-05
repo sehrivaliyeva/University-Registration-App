@@ -1,12 +1,11 @@
 package com.unversityregister.dto;
 
+import jakarta.persistence.Column;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 @Data
-public class ProfessionResponse {
+public class ComputerResponse {
     private Integer id;
     private String name;
-
+    private String code;
 }

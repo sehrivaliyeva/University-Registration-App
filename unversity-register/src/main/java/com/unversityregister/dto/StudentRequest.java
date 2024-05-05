@@ -14,5 +14,6 @@ public class StudentRequest {
     private String birthDay;
     private String groupNo;
     private String studentCode;
-    private ProfessionRequest professionRequest;
+    private Integer professionId;
+    private Integer computerId;
 }

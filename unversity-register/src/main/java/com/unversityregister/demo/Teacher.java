@@ -24,6 +24,7 @@ public class Teacher {
     @ManyToOne
     @JoinColumn(name = "profession_id")
     private Profession profession;
+
     @ManyToMany
     @JoinTable(
             name = "teacher_student",

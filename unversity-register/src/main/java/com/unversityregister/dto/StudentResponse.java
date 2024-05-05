@@ -6,8 +6,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Data
-@Getter
-@Setter
 public class StudentResponse {
     private Integer id;
     private String name;
@@ -15,5 +13,6 @@ public class StudentResponse {
     private String groupNo;
     private String studentCode;
     private String birthDay;
-    private ProfessionResponse professionResponse;
+    private Integer professionId;
+    private Integer computerId;
 }
