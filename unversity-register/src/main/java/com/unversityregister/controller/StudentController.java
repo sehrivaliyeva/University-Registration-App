@@ -1,13 +1,10 @@
 package com.unversityregister.controller;
 
-import com.unversityregister.demo.Student;
 import com.unversityregister.dto.StudentRequest;
 import com.unversityregister.dto.StudentResponse;
-import com.unversityregister.dto.StudentUpdateRequest;
 import com.unversityregister.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +25,7 @@ public class StudentController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Student> findById(@PathVariable("id") Integer id) {
+    public Optional<StudentResponse> findById(@PathVariable("id") Integer id) {
         return studentService.findById(id);
 
     }
@@ -39,7 +36,7 @@ public class StudentController {
     }
 
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<StudentResponse> create(@RequestBody StudentRequest student) {
         return new ResponseEntity<>(studentService.create(student), HttpStatus.CREATED);
 
@@ -47,7 +44,7 @@ public class StudentController {
 
 
     @PutMapping("/{id}")
-    public StudentResponse update(@RequestBody StudentUpdateRequest request, @PathVariable Integer id) {
+    public StudentResponse update(@RequestBody StudentRequest request, @PathVariable Integer id) {
         return studentService.update(request, id);
     }
 
