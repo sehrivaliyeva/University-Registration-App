@@ -1,5 +1,7 @@
 package com.unversityregister.dto;
 
+import com.unversityregister.demo.Computer;
+import com.unversityregister.demo.Profession;
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,6 +16,6 @@ public class StudentRequest {
     private String birthDay;
     private String groupNo;
     private String studentCode;
-    private Integer professionId;
-    private Integer computerId;
+    private Integer profession;
+    private Integer computer;
 }

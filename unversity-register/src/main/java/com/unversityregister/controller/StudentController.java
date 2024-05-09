@@ -1,9 +1,13 @@
 package com.unversityregister.controller;
 
+import com.unversityregister.demo.Student;
 import com.unversityregister.dto.StudentRequest;
 import com.unversityregister.dto.StudentResponse;
 import com.unversityregister.service.StudentService;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeMap;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +20,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class StudentController {
     private final StudentService studentService;
+
 
 
     @GetMapping
@@ -37,8 +42,8 @@ public class StudentController {
 
 
     @PostMapping
-    public ResponseEntity<StudentResponse> create(@RequestBody StudentRequest student) {
-        return new ResponseEntity<>(studentService.create(student), HttpStatus.CREATED);
+    public StudentResponse create(@RequestBody StudentRequest student) {
+        return studentService.create(student);
 
     }
 

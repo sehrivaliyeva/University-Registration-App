@@ -16,8 +16,8 @@ import java.util.List;
 @AllArgsConstructor
 public class Teacher {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private String firstName;
     private String lastName;
 

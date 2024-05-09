@@ -36,11 +36,15 @@ public class TeacherService {
 
     public TeacherResponse create(TeacherRequest teacherRequest) {
         var teacher = modelMapper.map(teacherRequest, Teacher.class);
+        if (teacherRequest.getProfessionId() != null) {
+            Profession profession = professionRepository.findById(teacherRequest.getProfessionId())
+                    .orElseThrow(() -> new IllegalArgumentException("Invalid professionId"));
+            teacher.setProfession(profession);
+        }
         var newTeacher = teacherRepository.save(teacher);
         return modelMapper.map(newTeacher, TeacherResponse.class);
 
     }
-
     public TeacherResponse update(Integer id, TeacherRequest teacherRequest) {
         var teacher = teacherRepository.findById(id).orElseThrow(() -> new RuntimeException("no information in database"));
         teacher.setFirstName(teacherRequest.getFirstName());
@@ -50,7 +54,6 @@ public class TeacherService {
                     .orElseThrow(() -> new RuntimeException("No information in database"));
             teacher.setProfession(profession);
         }
-
 
         var newTeacher = teacherRepository.save(teacher);
         return modelMapper.map(newTeacher, TeacherResponse.class);

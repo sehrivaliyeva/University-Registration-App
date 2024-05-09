@@ -1,11 +1,13 @@
 package com.unversityregister.service;
 
+import com.unversityregister.config.AppConfiguration;
 import com.unversityregister.demo.Computer;
 import com.unversityregister.dto.ComputerRequest;
 import com.unversityregister.dto.ComputerResponse;
 import com.unversityregister.repository.ComputerRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +18,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ComputerService {
     private final ComputerRepository computerRepository;
+
     private final ModelMapper modelMapper;
 
     public List<ComputerResponse> findAll() {

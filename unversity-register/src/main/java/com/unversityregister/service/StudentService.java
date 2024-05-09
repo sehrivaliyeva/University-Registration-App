@@ -8,8 +8,10 @@ import com.unversityregister.dto.StudentResponse;
 import com.unversityregister.repository.ComputerRepository;
 import com.unversityregister.repository.ProfessionRepository;
 import com.unversityregister.repository.StudentRepository;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeMap;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,12 +27,20 @@ public class StudentService {
     private final ProfessionRepository professionRepository;
     private final ComputerRepository computerRepository;
 
-
     public StudentResponse create(StudentRequest request) {
-        var student = mapper.map(request, Student.class);
-        var studentNew = studentRepository.save(student);
-        var response = mapper.map(studentNew, StudentResponse.class);
-        return response;
+        Student student = mapper.map(request, Student.class);
+        if (request.getProfession() != null) {
+            Profession profession = professionRepository.findById(request.getProfession())
+                    .orElseThrow(() -> new IllegalArgumentException("Invalid professionId"));
+            student.setProfession(profession);
+        }
+        if (request.getComputer() != null) {
+            Computer computer = computerRepository.findById(request.getComputer())
+                    .orElseThrow(() -> new IllegalArgumentException("Invalid computerId"));
+            student.setComputer(computer);
+        }
+        Student savedStudent = studentRepository.save(student);
+        return mapper.map(savedStudent, StudentResponse.class);
     }
 
     public List<StudentResponse> getAllStudent() {
@@ -56,13 +66,13 @@ public class StudentService {
         student.setBirthDay(request.getBirthDay());
         student.setGroupNo(request.getGroupNo());
         student.setStudentCode(request.getStudentCode());
-        if (request.getProfessionId() != null) {
-            Profession profession = professionRepository.findById(request.getProfessionId())
+        if (request.getProfession() != null) {
+            Profession profession = professionRepository.findById(request.getProfession())
                     .orElseThrow(() -> new RuntimeException("No information in database"));
             student.setProfession(profession);
         }
-        if (request.getComputerId() != null) {
-            Computer computer = computerRepository.findById(request.getComputerId())
+        if (request.getComputer() != null) {
+            Computer computer = computerRepository.findById(request.getComputer())
                     .orElseThrow(() -> new RuntimeException("No information in database"));
             student.setComputer(computer);
         }

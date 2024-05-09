@@ -1,5 +1,6 @@
 package com.unversityregister.dto;
 
+import com.unversityregister.demo.Profession;
 import lombok.Data;
 
 @Data

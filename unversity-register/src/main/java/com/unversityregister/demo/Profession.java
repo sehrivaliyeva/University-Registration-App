@@ -17,8 +17,8 @@ import java.util.List;
 public class Profession {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private String name;
 
     @OneToMany(mappedBy = "profession")
