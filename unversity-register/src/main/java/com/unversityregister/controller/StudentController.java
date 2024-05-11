@@ -25,11 +25,11 @@ public class StudentController {
 
     @GetMapping
     public List<StudentResponse> getAll() {
-        return studentService.getAllStudent();
+        return studentService.getAll();
 
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("find/{id}")
     public Optional<StudentResponse> findById(@PathVariable("id") Integer id) {
         return studentService.findById(id);
 

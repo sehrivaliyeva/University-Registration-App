@@ -43,8 +43,7 @@ public class StudentService {
         return mapper.map(savedStudent, StudentResponse.class);
     }
 
-    public List<StudentResponse> getAllStudent() {
-
+    public List<StudentResponse> getAll() {
         List<Student> studentList = studentRepository.findAll();
         List<StudentResponse> studentResponseList = studentList.stream().map(itm ->
                 mapper.map(itm, StudentResponse.class)
@@ -88,8 +87,9 @@ public class StudentService {
 
     public List<StudentResponse> findByGroupNo(String groupNo) {
 
-        var student = studentRepository.findByGroupNo(groupNo);
-        var studentNew = mapper.map(student, StudentResponse.class);
-        return (List<StudentResponse>) studentNew;
+        List<Student> students = studentRepository.findByGroupNo(groupNo);
+        List<StudentResponse> studentResponse = students.stream().map(student -> mapper.map(student, StudentResponse.class))
+                .collect(Collectors.toList());
+        return studentResponse;
     }
 }
