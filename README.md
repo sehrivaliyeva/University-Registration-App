@@ -31,20 +31,6 @@ The application manages university operations with these main entities:
    - Schedule and capacity management
 
 
-3. **Academic Tools**
-   - Grade recording by teachers
-   - Transcript generation
-   - Academic progress tracking
-
-## Database Schema
-
-![Database Schema Diagram](docs/db-schema.png) *(Optional: Add your ER diagram here)*
-
-Main tables:
-- `students` - Student information
-- `teachers` - Faculty records  
-- `departments` - Academic units
-
 ## Installation & Setup
 
 ### Prerequisites
